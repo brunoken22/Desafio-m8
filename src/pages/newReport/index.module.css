@@ -1,0 +1,46 @@
+.container{
+   background-color:#E5E5E5;
+   width:100%
+}
+.container2{
+   max-width:90%;
+   min-width: 100px;
+   margin:auto
+}
+.comprobar{
+   text-align: center;
+   font-size: 3rem;
+   font-weight: 700;
+}
+
+.titulo{
+   font-size: 2rem;
+   font-weight: 700;
+   text-align: center;
+   margin: 1rem;
+}
+.buttonReportar{
+   text-align: center;
+   margin: 1rem;
+}
+
+.img{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding-bottom: 1rem;
+   gap: 1rem;
+
+}
+.mapa{
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   gap: 1rem;
+}
+.mapa div{
+   width: 100% !important;
+   max-width: 100%;
+}

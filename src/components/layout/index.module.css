@@ -1,0 +1,39 @@
+
+.contenedor{
+   height: 100vh;
+   background-color: #E5E5E5;
+   display: grid;
+   grid-template-rows:auto 1fr;  
+}
+body::-webkit-scrollbar{
+   overflow: auto;
+   width: 10px;
+}
+body::-webkit-scrollbar-thumb{
+   background: rgb(180, 177, 177);
+   border-radius: 8px;
+ }
+ 
+ /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+ body::-webkit-scrollbar-thumb:hover {
+   background: rgb(189, 189, 189);
+   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+ }
+ 
+ /* Cambiamos el fondo cuando esté en active */
+  body::-webkit-scrollbar-thumb:active {
+   background-color: rgb(173, 175, 177);
+ }
+ 
+ body::-webkit-scrollbar-track {
+     background: #e1e1e1;
+     border-radius: 4px; 
+  } 
+
+ /* Cambiamos el fondo cuando esté en active o hover */
+  body::-webkit-scrollbar-track:hover,
+ body::-webkit-scrollbar-track:active {
+   background: #d4d4d4;
+ }
+ 
+

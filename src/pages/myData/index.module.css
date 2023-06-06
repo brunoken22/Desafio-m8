@@ -1,0 +1,20 @@
+.container {
+   flex-grow: 1;
+   margin: 0 auto;
+   position: relative;
+   width: auto;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+}
+
+.botones{
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+}
+.comprobar{
+   text-align: center;
+   font-size: 3rem;
+   font-weight: 700;
+}

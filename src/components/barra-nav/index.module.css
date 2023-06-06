@@ -1,0 +1,39 @@
+
+.start{
+ margin-left:40px
+}
+.cerrar{
+   margin-right:1rem
+
+}
+a{   
+   text-decoration: none;
+}
+.buttons{
+   display:flex !important;
+   gap: 1rem;
+}
+@media (max-width:1020px){
+   .buttons{
+      align-items: center!important;
+      gap: 1rem;
+      justify-content: center!important;
+   }
+
+   .start{
+      display: flex;
+      text-decoration: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-left:0
+   }
+   
+   .navbar-item{
+      color: #000 !important;
+      
+   }
+   .cerrar{
+      margin-right:0 
+  } 
+ }
