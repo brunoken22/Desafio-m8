@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import reactRefresh from "@vitejs/plugin-react-refresh";
+import path from "path";
 
 export default defineConfig({
    plugins: [reactRefresh()],
@@ -19,16 +20,19 @@ export default defineConfig({
 
    resolve: {
       alias: [
-         // ...
          {
             find: /^react-mapbox-gl/,
             replacement: "react-mapbox-gl/lib",
+         },
+         {
+            find: /^@img/,
+            replacement: path.resolve(__dirname, "./src/img"),
          },
       ],
    },
    base: "./",
    build: {
-      outDir: "dist", // Especifica el nombre del directorio de salida personalizado
+      outDir: "   dist", // Especifica el nombre del directorio de salida personalizado
       rollupOptions: {
          output: {
             entryFileNames: "bundle.js", // Especifica el nombre del archivo de salida personalizado
