@@ -1,14 +1,13 @@
 import { defineConfig } from "vite";
 import reactRefresh from "@vitejs/plugin-react-refresh";
 import react from "@vitejs/plugin-react";
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+
 export default defineConfig({
    plugins: [react()],
-   esbuild: {
-      jsxInject: `import 'buffer';`,
-   },
-   define: {
-      "process.env": {},
-   },
+
    css: {
       modules: {
          scopeBehaviour: "local", // Habilita los módulos CSS
@@ -18,6 +17,7 @@ export default defineConfig({
    },
    optimizeDeps: {
       include: ["*.png"], // Incluye los archivos PNG en la optimización de dependencias
+      exclude: ["buffer"],
    },
 
    resolve: {

@@ -19,7 +19,6 @@ export function ModReport(){
    const [data,setData]=useState({dataAGuardar:{lugar:"",lat:"",lng:""},dataUrl:""})
    const handleSubmit = (e:any)=>{
       e.preventDefault();
-
       const newD = {
          name: e?.target?.name?.value,
          lugar: data?.dataAGuardar.lugar,
@@ -27,8 +26,7 @@ export function ModReport(){
          lat:data.dataAGuardar.lat,
          lng:data.dataAGuardar.lng,
       }
-      
-      
+      lastData(newD)
       modiPet({
          name: e?.target?.name?.value,
          lugar: data?.dataAGuardar.lugar,
@@ -41,7 +39,23 @@ export function ModReport(){
          nav("/myReport",{replace:true})
       }) 
    }
-    
+   function lastData(newData:any) {
+      if (!newData) {
+         throw "Error";
+      }
+      if (!newData.lugar) {
+         data.dataAGuardar["lugar"] = pet.lugar;
+      }
+      if (!newData.dataUrrl) {
+         data["dataUrl"] = pet.img;
+      }
+      if (!newData.lat) {
+         data.dataAGuardar["lat"] = pet.ubi[0];
+      }
+      if (!newData.lng) {
+         data.dataAGuardar["lng"] = pet.ubi[1];
+      }
+   }
    useEffect(()=>{
       const ubi = JSON.parse(localStorage.getItem("ubi")!);
       dataDropzone(subirFoto.current);

@@ -1,5 +1,5 @@
 const Api_url = "https://pet-finder-hpfq.onrender.com";
-
+const prueba = "http://localhost:3000";
 export async function init() {
    if (localStorage.token) {
       const data = localStorage.getItem("token");
@@ -112,6 +112,18 @@ export async function deletePet(id: any) {
          "Content-Type": "application/json",
       },
    });
+}
+export async function sendEmail(newMessage: any) {
+   const res = await fetch(Api_url + "/sendinblue", {
+      method: "post",
+      headers: {
+         Accept: "application/json",
+         "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newMessage),
+   });
+   const respuesta = res.json();
+   return respuesta;
 }
 // export async function setState(newState: any) {
 //    if (newState.fullName) {

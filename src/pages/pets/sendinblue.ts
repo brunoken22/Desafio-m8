@@ -1,6 +1,6 @@
 import * as SibApiV3Sdk from "@sendinblue/client";
+
 const apiInstance = new SibApiV3Sdk.AccountApi();
-const otro = new SibApiV3Sdk.TransactionalEmailsApi();
 apiInstance.setApiKey(
    SibApiV3Sdk.AccountApiApiKeys.apiKey,
    "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"
@@ -8,6 +8,7 @@ apiInstance.setApiKey(
 
 process.env.SENDINBLUE;
 let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+const otro = new SibApiV3Sdk.TransactionalEmailsApi();
 // const sendinblue = () => {
 //    // Configuración de la API de Sendinblue
 //    const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
@@ -25,10 +26,10 @@ let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
 //    // Llamada a la API de Sendinblue para enviar el correo electrónico
 //    apiInstance.sendTransacEmail(sendSmtpEmail).then(
-//       (response) => {
+//       (response: any) => {
 //          console.log("Correo electrónico enviado:", response);
 //       },
-//       (error) => {
+//       (error: any) => {
 //          console.error("Error al enviar el correo electrónico:", error);
 //       }
 //    );

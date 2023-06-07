@@ -4,15 +4,14 @@ import { PetsCerca } from "../../components/petsCerca"
 import css from "./index.module.css"
 import { useRecoilState, useRecoilValue } from "recoil"                                                                                                         
 import { petsCerca } from "../../hook/hook"
-import {  sendSmtpEmail,otro } from "./sendinblue";
-import { getPetCerca } from "../../lib/api"
+import { getPetCerca ,sendEmail} from "../../lib/api"
 
 export  function Pets(){
    const [pet,setPetId]:any = useState()
    const divForm:any = useRef()
    const close:any = useRef()
    const pets:any = useRef()
-   const data = useRecoilValue(petsCerca)
+   const data:any = useRecoilValue(petsCerca)
    const [,setPet] = useRecoilState(petsCerca)
    const handleInfo =(dataButton:any)=>{
       const newData = data.find((item:any)=>item.objectID == dataButton.id)
@@ -30,41 +29,26 @@ export  function Pets(){
    }
    const handleForm =(e:any)=>{
       e.preventDefault();
+      
       const newData = {
          namePet:pet.name,
          info:e.target.donde.value,
-         tel:e.target.telefono.value,
-         nombreRecib:e.target.nombre.value
+         tel:e.target.telefono.value,  
+         nombreRecib:e.target.nombre.value,
+         email:pet.email,
+         nombre:"ejemplo"
       }
-      console.log(newData);
-     try{
-      sendinblue(newData)
-     }catch(e){
-      console.log(e); 
-     }
-   }
-   function sendinblue(data:any) {
-      sendSmtpEmail.subject = `${data.namePet} fue vista`;
-      sendSmtpEmail.htmlContent = `<html><body><h2>${data.info}</h2><br><a href="tel:${data.tel}">LLamar : ${data.tel}</a></body></html>`;
-      sendSmtpEmail.sender = {
-         name: data.nombreRecib,
-         email: "bruno.am.59@gmail.com",
-      };
-      sendSmtpEmail.to = [{ email: data.email, name: data.nombre }];
-      otro.sendTransacEmail(sendSmtpEmail).then(
-          (res:any) =>{
-            console.log(
-               "API called successfully. Returned data: " +
-                  JSON.stringify(res)
-            );
-            alert("Mensaje Enviado");
-            location.reload();
-         },
-         function (error:any) {
-            console.error("error", error);
+      sendEmail(newData).then(res=>{
+         console.log(res);
+         if(res.message == "ok"){
+            alert("Mensaje Enviado")
+            location.reload()
          }
-      );
+         
+      })
+ 
    }
+ 
    useEffect(()=>{
       if(pet){
          
