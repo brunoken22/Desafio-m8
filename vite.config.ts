@@ -33,7 +33,7 @@ export default defineConfig({
             entryFileNames: "bundle.js", // Especifica el nombre del archivo de salida personalizado
          },
          input: {
-            main: "./dist/index.html",
+            main: "./index.html",
          },
       },
    },
