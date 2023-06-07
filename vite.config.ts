@@ -1,9 +1,5 @@
 import { defineConfig } from "vite";
-import reactRefresh from "@vitejs/plugin-react-refresh";
 import react from "@vitejs/plugin-react";
-import { createRequire } from "module";
-
-const require = createRequire(import.meta.url);
 
 export default defineConfig({
    plugins: [react()],
@@ -28,5 +24,13 @@ export default defineConfig({
             replacement: "react-mapbox-gl/lib",
          },
       ],
+   },
+   build: {
+      outDir: "dist", // Especifica el nombre del directorio de salida personalizado
+      rollupOptions: {
+         output: {
+            entryFileNames: "bundle.js", // Especifica el nombre del archivo de salida personalizado
+         },
+      },
    },
 });
