@@ -1,5 +1,4 @@
 const Api_url = "https://pet-finder-hpfq.onrender.com";
-const prueba = "http://localhost:3000";
 export async function init() {
    if (localStorage.token) {
       const data = localStorage.getItem("token");

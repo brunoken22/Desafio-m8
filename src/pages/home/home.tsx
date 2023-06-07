@@ -1,4 +1,4 @@
-import img from "../../img/refer.png"
+const  img= require( "../../img/refer.png")
 import { Button } from "../../ui/button"
 import {Text} from "../../ui/text"
 import css from "./index.module.css"

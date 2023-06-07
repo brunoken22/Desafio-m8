@@ -1,4 +1,5 @@
-import img from "../../img/login.png"
+// import img from "../../img/login.png"
+const img = require("../../img/login.png")
 import { FormLogin } from "../../components/formLogin"
 import css from "./index.module.css"
 import {Text} from "../../ui/text"
