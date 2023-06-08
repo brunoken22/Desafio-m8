@@ -25,7 +25,6 @@ export  function Home (){
       const ubicacion:any = localStorage.getItem("ubi")
       if(ubicacion){
          const ubi:Ubi = JSON.parse(ubicacion)
-      
          if(ubi.lat){
             nav("/pets",{replace:true})
          }
