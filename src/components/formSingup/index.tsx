@@ -1,12 +1,13 @@
 import { Label } from "../../ui/label"
 import { Input } from "../../ui/input"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { auth } from "../../lib/api";
 import {user} from "../../hook/hook"
 import { useRecoilState } from "recoil"
 
 import css from "./index.module.css"
 export function FormSingUp (){
+   const nav = useNavigate()
    const [,setDataUser] = useRecoilState(user)
    const handleSubmit = (e:any)=>{
       e.preventDefault();
@@ -18,6 +19,12 @@ export function FormSingUp (){
       }
       auth(newUser).then(res=>{
          setDataUser(res)
+         
+         if(res){
+            alert("Cuenta creada")
+            nav("/login",{replace:true})
+
+         }
       })
       
    }  
