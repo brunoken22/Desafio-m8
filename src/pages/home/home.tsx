@@ -23,7 +23,6 @@ export  function Home (){
    }
    useEffect(()=>{
       const ubicacion:any = localStorage.getItem("ubi")
-      console.log(ubicacion);
       if(ubicacion){
          const ubi:Ubi = JSON.parse(ubicacion)
       

@@ -19,8 +19,6 @@ export function FormLogin (){
          password:password.current.value,
       }
       singin(data.email,data.password).then(respuesta=>{
-         console.log(respuesta);
-         
          if(respuesta.message == "Incorreto"){
             alert("Contraseña o usuario incorrecto")
             return 
