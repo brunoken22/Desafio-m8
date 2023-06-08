@@ -32,6 +32,7 @@ export default defineConfig({
    },
    base: "./",
    build: {
+      chunkSizeWarningLimit: 1000, // Ajusta el límite a 1000 kB
       outDir: "dist", // Especifica el nombre del directorio de salida personalizado
       rollupOptions: {
          output: {

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { Link } from "react-router-dom";
-const   img=require( "../../img/logo.png");  
+import img from  "../../img/logo.png";  
 import css from "./index.module.css"
 import { user} from "../../hook/hook"
 import { useRecoilValue } from "recoil";

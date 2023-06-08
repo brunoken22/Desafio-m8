@@ -25,6 +25,7 @@
     "dropzone": "^6.0.0-beta.2",
     "events": "^3.3.0",
     "fast-xml-parser": "^4.2.4",
+    "live-server": "^1.2.2",
     "mapbox-gl": "1.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

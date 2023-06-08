@@ -4,6 +4,10 @@ import {Text} from "../../ui/text"
 import css from "./index.module.css"
 import {useNavigate} from "react-router-dom"
 import { useEffect } from "react"
+type Ubi={
+   lat:"",
+   lng:""
+}
 export  function Home (){
    const nav = useNavigate()
    const handleCoor = (position:any)=>{   
@@ -19,9 +23,13 @@ export  function Home (){
    }
    useEffect(()=>{
       const ubicacion:any = localStorage.getItem("ubi")
-      const ubi = JSON.parse(ubicacion)
-      if(ubi.lat){
-         nav("/pets",{replace:true})
+      console.log(ubicacion);
+      if(ubicacion){
+         const ubi:Ubi = JSON.parse(ubicacion)
+      
+         if(ubi.lat){
+            nav("/pets",{replace:true})
+         }
       }
    },[])
    return (

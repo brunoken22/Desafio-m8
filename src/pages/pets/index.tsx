@@ -71,7 +71,7 @@ export  function Pets(){
    return (
       <>
          <div style={{textAlign:"center"} } className={css.contenedor}>
-             <Text eti="h2">Mascotas perdidas cerca</Text>
+            <Text eti="h2">Mascotas perdidas cerca</Text>
             <div className={css.pets}  ref={pets}>
                {data?data.map((item:any)=>{
                      return (
