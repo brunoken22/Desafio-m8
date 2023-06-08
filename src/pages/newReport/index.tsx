@@ -37,25 +37,28 @@ export function NewReport(){
       
       const ubi = JSON.parse(localStorage.getItem("ubi")!);
       dataDropzone(subirFoto.current);
-      const map = initMapbox(mapbox.current,[ubi.lng,ubi.lat]);
-      searchMapbox.current.appendChild(geocoder.onAdd(map));
-      geocoder.on("result", function (e) {
-         const result = e.result;
-         const [lng, lat] = result.geometry.coordinates;
-         new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map);
-         map.setCenter([lng, lat]);
-         map.setZoom(14);
-         const dataAGuardar={lugar:"",lng:"",lat:""}
-         dataAGuardar["lugar"] = result.place_name;
-         dataAGuardar["lng"] = lng;
-         dataAGuardar["lat"] = lat;
-
-         setData((prevState )=>({
-            ...prevState,
-            dataAGuardar
-         }))
-         
-      });
+      if(ubi){
+         const map = initMapbox(mapbox.current,[ubi.lng,ubi.lat]);
+         searchMapbox.current.appendChild(geocoder.onAdd(map));
+         geocoder.on("result", function (e) {
+            const result = e.result;
+            const [lng, lat] = result.geometry.coordinates;
+            new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map);
+            map.setCenter([lng, lat]);
+            map.setZoom(14);
+            const dataAGuardar={lugar:"",lng:"",lat:""}
+            dataAGuardar["lugar"] = result.place_name;
+            dataAGuardar["lng"] = lng;
+            dataAGuardar["lat"] = lat;
+   
+            setData((prevState )=>({
+               ...prevState,
+               dataAGuardar
+            }))
+            
+         });
+      }
+    
 
    },[])
  
