@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {Text} from '../../ui/text';
 import {PetsCerca} from '../../components/petsCerca';
 import css from './index.module.css';
