@@ -1,20 +1,17 @@
-.container{
-   background-color: #E5E5E5;
+.titulo {
+  font-size: 2rem;
+  text-align: center;
+  margin: 20px;
+  font-weight: 700;
 }
-.titulo{
-   font-size: 2rem;
-   text-align: center;
-   margin: 20px;
-   font-weight: 700;
+.pets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
 }
-.pets{
-   display: flex;
-   flex-wrap: wrap;
-   justify-content:center;
-   gap: 1.5rem;
-}
-.comprobar{
-   text-align: center;
-   font-size: 3rem;
-   font-weight: 700;
+.comprobar {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
 }

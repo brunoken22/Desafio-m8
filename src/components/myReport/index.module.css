@@ -1,19 +1,28 @@
-.cardInfo{
-   border-radius: 10px;
-   background-color: #fff;
-   padding: 1rem;
+.cardInfo {
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
-.card{
-   margin: 10px;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+.card {
+  gap: 1rem;
+  text-align: center;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
 }
 
-.botones{
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
-   gap: 1rem;
+.botones {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.img {
+  object-fit: cover;
 }

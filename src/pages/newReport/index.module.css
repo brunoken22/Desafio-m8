@@ -1,46 +1,55 @@
-.container{
-   background-color:#E5E5E5;
-   width:100%
+.container {
 }
-.container2{
-   max-width:90%;
-   min-width: 100px;
-   margin:auto
+.container2 {
+  max-width: 95%;
+  min-width: 100px;
+  margin: auto;
+  height: 100%;
 }
-.comprobar{
-   text-align: center;
-   font-size: 3rem;
-   font-weight: 700;
-}
-
-.titulo{
-   font-size: 2rem;
-   font-weight: 700;
-   text-align: center;
-   margin: 1rem;
-}
-.buttonReportar{
-   text-align: center;
-   margin: 1rem;
+.comprobar {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
 }
 
-.img{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
-   padding-bottom: 1rem;
-   gap: 1rem;
+.titulo {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.buttonReportar {
+  text-align: center;
+  margin: 1rem;
+}
+.formulario {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 1020px;
+  margin: auto;
+}
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+.mapa {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.mapa div {
+  width: 100% !important;
+  max-width: 100%;
+}
 
-}
-.mapa{
-   display: flex;
-   flex-direction: column;
-   flex-wrap: wrap;
-   justify-content: space-between;
-   gap: 1rem;
-}
-.mapa div{
-   width: 100% !important;
-   max-width: 100%;
+.button {
+  width: 100%;
 }
