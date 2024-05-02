@@ -7,11 +7,12 @@ import {useEffect, useRef} from 'react';
 import * as mapboxgl from 'mapbox-gl';
 import {createPet} from '../../lib/api';
 import {user} from '../../hook/hook';
-import {useRecoilState} from 'recoil';
+import {useRecoilValue} from 'recoil';
 import {useNavigate} from 'react-router-dom';
 export function NewReport() {
   const router = useNavigate();
-  const [userDato] = useRecoilState(user);
+  const [connectedOnce, setConnectedOnce] = useState(false);
+  const userDato = useRecoilValue(user);
   const foto: any = useRef();
   const subirFoto: any = useRef();
   const mapbox: any = useRef();
@@ -22,23 +23,30 @@ export function NewReport() {
   });
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    await createPet(
-      {
-        name: e.target.name.value,
-        email: userDato.email,
-        lugar: data?.dataAGuardar.lugar,
-        img: data.dataUrl,
-        lat: data.dataAGuardar.lat,
-        lng: data.dataAGuardar.lng,
-      },
-      Number(userDato.id)
-    ).then(() => {
+    createPet({
+      name: e.target.name.value,
+      email: userDato.email,
+      lugar: data?.dataAGuardar.lugar,
+      img: data.dataUrl,
+      lat: data.dataAGuardar.lat,
+      lng: data.dataAGuardar.lng,
+      token: JSON.parse(localStorage.getItem('token')!),
+    }).then((response) => {
+      if (response.message) {
+        return alert(response.message);
+      }
       router('/myReport');
     });
   };
 
   useEffect(() => {
-    if (subirFoto?.current && mapbox?.current && searchMapbox?.current) {
+    if (
+      subirFoto?.current &&
+      mapbox?.current &&
+      searchMapbox?.current &&
+      !connectedOnce
+    ) {
+      setConnectedOnce(true);
       const ubi = JSON.parse(localStorage.getItem('ubi')!);
       dataDropzone(subirFoto.current);
       if (ubi) {

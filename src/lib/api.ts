@@ -1,18 +1,16 @@
 const Api_url = 'https://pet-finder-hpfq.onrender.com';
 export async function init() {
-  if (localStorage.token) {
-    const data = localStorage.getItem('token');
-    if (data == '""' || data == 'undefined') return;
-    if (data) {
-      const respuesta = await fetch(Api_url + '/init/token', {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'bearer ' + JSON.parse(data),
-        },
-      });
-      const res = await respuesta.json();
-      return res;
-    }
+  const token = await localStorage.token;
+  if (token) {
+    const respuesta = await fetch(Api_url + '/init/token', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'bearer ' + JSON.parse(token),
+      },
+    });
+    const res = await respuesta.json();
+
+    return res;
   }
   return false;
 }
@@ -63,8 +61,8 @@ export async function modificar(data: any, id: any) {
   const res = await respuesta.json();
   return res;
 }
-export async function createPet(data: any, id: Number) {
-  const res = await fetch(Api_url + '/pet/' + id, {
+export async function createPet(data: any) {
+  const res = await fetch(Api_url + '/pet', {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -118,14 +116,3 @@ export async function sendEmail(newMessage: any) {
   const respuesta = res.json();
   return respuesta;
 }
-// export async function setState(newState: any) {
-//    if (newState.fullName) {
-//       this.data = newState;
-//    } else {
-//       this.pets = [...newState];
-//       for (let cb of this.listeners) {
-//          cb();
-//       }
-//    }
-//    localStorage.setItem("token", JSON.stringify(this.data.token));
-// }

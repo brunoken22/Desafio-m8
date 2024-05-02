@@ -2,7 +2,6 @@
 
 ¡Bienvenido a Pet Finder! Esta es una página web dedicada a ayudar a encontrar hogares amorosos para mascotas necesitadas. A continuación, encontrarás más detalles sobre la página y las tecnologías utilizadas.
 
-
 ## Tecnologías Utilizadas
 
 - **HTML y CSS**: Utilizamos HTML y CSS para desarrollar la estructura y el diseño de la página web.
@@ -21,4 +20,4 @@
 
 - Backend: [Postman](https://documenter.getpostman.com/view/25234975/2s93eWyrvV)
 
-- Sitio Web: [Pet Finder](https://pet-finder-hpfq.onrender.com)
+- Sitio Web: [Pet Finder](https://desafio-m8-d396d.web.app/)

@@ -16,7 +16,6 @@ export function MyPets(props: any) {
     e.preventDefault();
     deletePet(props.id).then(() => {
       alert('Eliminado');
-      location.reload();
     });
   };
 

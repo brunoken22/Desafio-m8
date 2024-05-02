@@ -13,9 +13,11 @@
   }
 }
 .img {
+  background-color: white;
   height: 220px;
   border-radius: 5px;
   object-fit: cover;
+  width: 100%;
 }
 .description {
   display: flex;

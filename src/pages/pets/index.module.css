@@ -12,6 +12,7 @@
   flex-wrap: wrap;
   padding: 5%;
   gap: 1rem;
+  width: 100%;
 }
 .petss {
   position: fixed;
