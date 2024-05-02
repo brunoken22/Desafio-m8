@@ -9,7 +9,9 @@ import {createPet} from '../../lib/api';
 import {user} from '../../hook/hook';
 import {useRecoilValue} from 'recoil';
 import {useNavigate} from 'react-router-dom';
+import {Loader} from '../../components/loader';
 export function NewReport() {
+  const [loading, setLoading] = useState(false);
   const router = useNavigate();
   const [connectedOnce, setConnectedOnce] = useState(false);
   const userDato = useRecoilValue(user);
@@ -23,6 +25,7 @@ export function NewReport() {
   });
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
     createPet({
       name: e.target.name.value,
       email: userDato.email,
@@ -32,6 +35,8 @@ export function NewReport() {
       lng: data.dataAGuardar.lng,
       token: JSON.parse(localStorage.getItem('token')!),
     }).then((response) => {
+      setLoading(false);
+
       if (response.message) {
         return alert(response.message);
       }
@@ -89,7 +94,9 @@ export function NewReport() {
       }));
     });
   }
-
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <div className={css.container}>
       {userDato && userDato?.id ? (
@@ -133,7 +140,7 @@ export function NewReport() {
                 style={{height: '250px'}}></div>
               <div ref={searchMapbox} style={{width: '100%'}}></div>
             </div>
-            <div className={`${css.buttonReportar} d-grid gap-2`}>
+            <div className={`${css.buttonReportar} `}>
               <button
                 type='submit'
                 className={`${css.button} button is-success`}>

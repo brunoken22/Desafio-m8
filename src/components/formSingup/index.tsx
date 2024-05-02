@@ -5,12 +5,15 @@ import {auth} from '../../lib/api';
 import {user} from '../../hook/hook';
 import {useRecoilState} from 'recoil';
 import css from './index.module.css';
+import {useState} from 'react';
+import {Loader} from '../loader';
 export function FormSingUp() {
   const nav = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [, setDataUser] = useRecoilState(user);
   const handleSubmit = (e: any) => {
     e.preventDefault();
-
+    setLoading(true);
     const newUser = {
       fullName: e.target.name.value,
       email: e.target.email.value,
@@ -18,6 +21,7 @@ export function FormSingUp() {
     };
     auth(newUser).then((res) => {
       setDataUser(res);
+      setLoading(false);
 
       if (res) {
         alert('Cuenta creada');
@@ -25,6 +29,9 @@ export function FormSingUp() {
       }
     });
   };
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <form className={css.form} onSubmit={handleSubmit}>
       <div className='mb-3'>

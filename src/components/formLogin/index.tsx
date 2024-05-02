@@ -1,12 +1,14 @@
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
 import css from './index.module.css';
 import {singin} from '../../lib/api';
 import {user, token} from '../../hook/hook';
 import {useRecoilState} from 'recoil';
 import {useNavigate} from 'react-router-dom';
+import {Loader} from '../loader';
 
 export function FormLogin() {
+  const [loading, setLoading] = useState(false);
   const nav = useNavigate();
   const email: any = useRef();
   const password: any = useRef();
@@ -14,11 +16,13 @@ export function FormLogin() {
   const [, setTokenInit] = useRecoilState(token);
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    setLoading(true);
     const data = {
       email: email.current.value,
       password: password.current.value,
     };
     singin(data.email, data.password).then((respuesta) => {
+      setLoading(true);
       if (respuesta.message == 'Incorreto') {
         alert('Contraseña o usuario incorrecto');
         return;
@@ -30,6 +34,9 @@ export function FormLogin() {
       nav('/myData', {replace: true});
     });
   };
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <form className={css.form} onSubmit={handleSubmit}>

@@ -26,8 +26,12 @@ export function MyPets(props: any) {
       </figure>
       <div className={css.card}>
         <div>
-          <h5 className='title is-4 nombre'>{props.name}</h5>
-          <p className='subtitle is-6'>{props.lugar}</p>
+          <h5 className='title is-4 nombre' style={{color: '#fff'}}>
+            {props.name}
+          </h5>
+          <p className='subtitle is-6' style={{color: '#fff'}}>
+            {props.lugar}
+          </p>
         </div>
         <div className={css.botones}>
           <button onClick={handleEditar} className='editar button is-info'>

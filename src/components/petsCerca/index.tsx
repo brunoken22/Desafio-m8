@@ -11,7 +11,10 @@ export function PetsCerca(props: any) {
         <h2 className={css.title}>{props.title}</h2>
         <p>{props.lugar}</p>
       </div>
-      <Button report={handleReport} btn='is-danger' ids={props.userId}>
+      <Button
+        report={handleReport}
+        btn='is-danger is-fullwidth'
+        ids={props.userId}>
         Reportar
       </Button>
     </div>
