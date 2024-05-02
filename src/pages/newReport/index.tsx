@@ -8,8 +8,9 @@ import * as mapboxgl from 'mapbox-gl';
 import {createPet} from '../../lib/api';
 import {user} from '../../hook/hook';
 import {useRecoilState} from 'recoil';
-
+import {useNavigate} from 'react-router-dom';
 export function NewReport() {
+  const router = useNavigate();
   const [userDato] = useRecoilState(user);
   const foto: any = useRef();
   const subirFoto: any = useRef();
@@ -32,8 +33,7 @@ export function NewReport() {
       },
       Number(userDato.id)
     ).then(() => {
-      alert('Reportado');
-      location.reload();
+      router('/myReport');
     });
   };
 

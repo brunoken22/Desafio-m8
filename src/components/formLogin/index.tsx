@@ -66,12 +66,10 @@ export function FormLogin() {
           Olvidasates contraseña?
         </a>
       </div>
-      <div className='field is-grouped' style={{justifyContent: 'center'}}>
-        <div className='control'>
-          <button type='submit' className='button is-success'>
-            Ingresar
-          </button>
-        </div>
+      <div className='control d-grid gap-2'>
+        <button type='submit' className='button is-success  is-fullwidth'>
+          Ingresar
+        </button>
       </div>
       <p style={{textAlign: 'center', marginTop: '1rem'}}>
         Aún no tienes cuenta?{' '}

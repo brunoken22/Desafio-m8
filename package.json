@@ -22,6 +22,7 @@
     "bootstrap": "^5.2.3",
     "buffer": "^6.0.3",
     "bufferutil": "^4.0.7",
+    "bulma": "0.9.4",
     "dropzone": "^6.0.0-beta.2",
     "events": "^3.3.0",
     "fast-xml-parser": "^4.2.4",
