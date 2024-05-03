@@ -1,0 +1,26 @@
+.containerUbi {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 30;
+  backdrop-filter: blur(5px);
+}
+.containerFormUbi {
+  padding: 1rem;
+  background-color: black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}

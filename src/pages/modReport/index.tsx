@@ -8,8 +8,13 @@ import * as mapboxgl from 'mapbox-gl';
 import {modPet} from '../../hook/hook';
 import {useRecoilValue} from 'recoil';
 import {modiPet} from '../../lib/api';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import {Button} from '../../ui/button';
+import cssUbi from './index.module.css';
+import {Loader} from '../../components/loader';
 export function ModReport() {
+  const [loading, setLoading] = useState(false);
+  const [activeUbi, setActiveUbi] = useState(false);
   const nav = useNavigate();
   const pet = useRecoilValue(modPet);
   const foto: any = useRef();
@@ -20,8 +25,10 @@ export function ModReport() {
     dataAGuardar: {lugar: '', lat: '', lng: ''},
     dataUrl: '',
   });
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    setLoading(true);
     const newD = {
       name: e?.target?.name?.value,
       lugar: data?.dataAGuardar.lugar,
@@ -40,6 +47,7 @@ export function ModReport() {
       },
       Number(pet.id)
     ).then(() => {
+      setLoading(false);
       alert('Modificado');
       nav('/myReport', {replace: true});
     });
@@ -63,6 +71,10 @@ export function ModReport() {
   }
   useEffect(() => {
     const ubi = JSON.parse(localStorage.getItem('ubi')!);
+
+    if (!ubi) {
+      return setActiveUbi(true);
+    }
     dataDropzone(subirFoto.current);
     const map = initMapbox(mapbox.current, [ubi.lng, ubi.lat]);
     searchMapbox.current.appendChild(geocoder.onAdd(map));
@@ -82,7 +94,7 @@ export function ModReport() {
         dataAGuardar,
       }));
     });
-  }, []);
+  }, [activeUbi]);
 
   function dataDropzone(btn: any) {
     // const imgPet: any = that.querySelector(".imagen");
@@ -103,6 +115,17 @@ export function ModReport() {
         dataUrl: file.dataURL!,
       }));
     });
+  }
+  const handleCoor = (position: any) => {
+    setActiveUbi(false);
+    const ubi = {
+      lat: position.latitude,
+      lng: position.longitude,
+    };
+    localStorage.setItem('ubi', JSON.stringify(ubi));
+  };
+  if (loading) {
+    return <Loader />;
   }
   return (
     <div className={css.container}>
@@ -155,6 +178,21 @@ export function ModReport() {
           </div>
         </form>
       </div>
+      {activeUbi ? (
+        <div className={cssUbi.containerUbi}>
+          <div className={cssUbi.containerFormUbi}>
+            <h2 className={cssUbi.title}>Es necesario la ubicación</h2>
+            <div className={cssUbi.buttons}>
+              <Button btn='is-success' coordenadas={handleCoor}>
+                Dar ubicación
+              </Button>
+              <Link className='button is-danger' to='/myReport'>
+                Cancelar
+              </Link>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

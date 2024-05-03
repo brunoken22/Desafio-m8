@@ -76,6 +76,7 @@ export function NewReport() {
       }
     }
   }, [userDato]);
+
   function dataDropzone(btn: any) {
     const myDropzone = initDropzone(btn);
     myDropzone.on('thumbnail', function (file) {
