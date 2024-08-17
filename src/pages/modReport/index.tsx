@@ -2,9 +2,8 @@ import css from '../newReport/index.module.css';
 import {initMapbox, geocoder} from '../newReport/mapbox';
 import {useState} from 'react';
 import {initDropzone} from '../newReport/dropzone';
-import 'mapbox-gl/dist/mapbox-gl.css';
 import {useEffect, useRef} from 'react';
-import * as mapboxgl from 'mapbox-gl';
+import mapboxgl from 'mapbox-gl';
 import {modPet} from '../../hook/hook';
 import {useRecoilValue} from 'recoil';
 import {modiPet} from '../../lib/api';
@@ -12,6 +11,8 @@ import {Link, useNavigate} from 'react-router-dom';
 import {Button} from '../../ui/button';
 import cssUbi from './index.module.css';
 import {Loader} from '../../components/loader';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
 export function ModReport() {
   const [loading, setLoading] = useState(false);
   const [activeUbi, setActiveUbi] = useState(false);
@@ -76,8 +77,9 @@ export function ModReport() {
       return setActiveUbi(true);
     }
     dataDropzone(subirFoto.current);
-    const map = initMapbox(mapbox.current, [ubi.lng, ubi.lat]);
+    const map = initMapbox(mapbox.current, [pet.ubi[1], pet.ubi[0]]);
     searchMapbox.current.appendChild(geocoder.onAdd(map));
+    geocoder.setInput(pet.lugar);
     geocoder.on('result', function (e) {
       const result = e.result;
       const [lng, lat] = result.geometry.coordinates;
@@ -124,9 +126,6 @@ export function ModReport() {
     };
     localStorage.setItem('ubi', JSON.stringify(ubi));
   };
-  if (loading) {
-    return <Loader />;
-  }
   return (
     <div className={css.container}>
       <div className={css.container2}>
@@ -168,7 +167,14 @@ export function ModReport() {
                 className={css.geocoder}
                 ref={mapbox}
                 style={{height: '250px'}}></div>
-              <div ref={searchMapbox} style={{width: '100%'}}></div>
+              <div
+                ref={searchMapbox}
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  position: 'relative',
+                }}></div>
             </div>
             <div className={css.buttonReportar}>
               <button type='submit' className={` button is-success`}>
@@ -193,6 +199,7 @@ export function ModReport() {
           </div>
         </div>
       ) : null}
+      {loading && <Loader />}
     </div>
   );
 }
