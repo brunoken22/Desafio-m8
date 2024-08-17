@@ -16,7 +16,6 @@ import {useRecoilValue} from 'recoil';
 import {user} from '../hook/hook';
 function AppRouter() {
   const userData = useRecoilValue(user);
-
   return (
     <Routes>
       <Route path='/' element={<Layout />}>

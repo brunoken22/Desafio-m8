@@ -1,14 +1,5 @@
 import {atom} from 'recoil';
 
-export function searchName() {
-  // const id = useRecoilValue(searchStateApi);
-  // return id;
-}
-
-export function searchId() {
-  // const product = useRecoilValue(productStateApi);
-  // return product;
-}
 export const user = atom({
   key: 'user',
   default: {
@@ -41,6 +32,3 @@ export const modPet = atom({
     ubi: [],
   },
 });
-// const dataPetsCerca = useRecoilValue(petsCerca);
-// return petsCerca;
-// }

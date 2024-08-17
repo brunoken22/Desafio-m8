@@ -18,7 +18,6 @@ export async function cerrarSesion() {
   localStorage.removeItem('token');
 }
 export async function auth(cs: any) {
-  // const cs = this.getState();
   const auth = await fetch(Api_url + '/auth', {
     method: 'post',
     headers: {
@@ -28,10 +27,7 @@ export async function auth(cs: any) {
   });
   const json = await auth.json();
   const res = await json;
-  // this.setState({
-  //    ...res.auth,
-  //    token: res.token,
-  // });
+
   return res;
 }
 export async function singin(email: string, password: string) {
