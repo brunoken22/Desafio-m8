@@ -26,7 +26,7 @@ export function Pets() {
     const response = await sendEmail(newData);
     if (response.message) {
       alert('Mensaje Enviado');
-      setOpeForm(fakse);
+      setOpeForm(false);
     }
   };
 
