@@ -1,5 +1,4 @@
-const Api_url =
-  'http://localhost:3000' || 'https://pet-finder-hpfq.onrender.com';
+const Api_url = 'https://pet-finder-hpfq.onrender.com';
 export async function init() {
   const token = await localStorage.token;
   if (token) {
