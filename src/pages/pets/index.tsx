@@ -1,21 +1,15 @@
 import {useState, useEffect} from 'react';
 import {Text} from '../../ui/text';
-import {PetsCerca} from '../../components/petsCerca';
 import css from './index.module.css';
-import {useRecoilState, useRecoilValue} from 'recoil';
+import {useRecoilState} from 'recoil';
 import {petsCerca} from '../../hook/hook';
 import {getPetCerca, sendEmail} from '../../lib/api';
+import TemplatePets from '../../components/templatePets';
 
 export function Pets() {
   const [pet, setPetId]: any = useState();
   const [openForm, setOpeForm]: any = useState(false);
-  const data: any = useRecoilValue(petsCerca);
-  const [, setPet] = useRecoilState(petsCerca);
-  const handleInfo = ({id}: {id: string}) => {
-    setOpeForm(true);
-    const newData = data.find((item: any) => item.objectID == id);
-    setPetId(newData);
-  };
+  const [pets, setPet] = useRecoilState(petsCerca);
 
   const handleForm = (e: any) => {
     e.preventDefault();
@@ -29,7 +23,6 @@ export function Pets() {
       nombre: 'ejemplo',
     };
     sendEmail(newData).then((res) => {
-      console.log(res);
       if (res.message == 'ok') {
         alert('Mensaje Enviado');
         location.reload();
@@ -51,16 +44,19 @@ export function Pets() {
       <div style={{textAlign: 'center'}} className={css.contenedor}>
         <Text eti='h1'>Mascotas perdidas cerca</Text>
         <div className={css.pets}>
-          {data
-            ? data.map((item: any) => {
+          {pets
+            ? pets.map((item: any) => {
                 return (
-                  <PetsCerca
+                  <TemplatePets
                     key={item.objectID}
-                    report={handleInfo}
-                    userId={item.objectID}
-                    title={item.name}
+                    report={true}
+                    handleReport={() => {
+                      setOpeForm(true);
+                      setPetId(item);
+                    }}
+                    id={item.objectID}
+                    name={item.name}
                     lugar={item.lugar}
-                    email={item.email}
                     img={item.img}
                   />
                 );
@@ -108,7 +104,7 @@ export function Pets() {
                   Dónde lo viste?
                 </label>
                 <textarea
-                  className='textarea'
+                  className={`textarea ${css.textarea}`}
                   id='donde'
                   rows={3}
                   required></textarea>

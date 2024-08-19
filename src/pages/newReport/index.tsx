@@ -95,9 +95,7 @@ export function NewReport() {
       }));
     });
   }
-  if (loading) {
-    return <Loader />;
-  }
+
   return (
     <div className={css.container}>
       {userDato && userDato?.id ? (
@@ -139,7 +137,14 @@ export function NewReport() {
                 className={css.geocoder}
                 ref={mapbox}
                 style={{height: '250px'}}></div>
-              <div ref={searchMapbox} style={{width: '100%'}}></div>
+              <div
+                ref={searchMapbox}
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  position: 'relative',
+                }}></div>
             </div>
             <div className={`${css.buttonReportar} `}>
               <button
@@ -155,6 +160,7 @@ export function NewReport() {
           <h2 className={css.comprobar}>Ingrese a una cuenta o registrese</h2>
         </div>
       )}
+      {loading&&<Loader/>}
     </div>
   );
 }

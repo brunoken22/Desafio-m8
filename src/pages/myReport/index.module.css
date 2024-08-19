@@ -3,12 +3,21 @@
   text-align: center;
   margin: 20px;
   font-weight: 700;
+  position: relative;
 }
 .pets {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5rem;
+  position: relative;
+}
+.newReport {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 .comprobar {
   text-align: center;

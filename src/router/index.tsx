@@ -11,9 +11,11 @@ import {ModReport} from '../pages/modReport';
 import {
   ComponentProtect,
   ComponentProtectUser,
+  ComponentProtectLoginSingup,
 } from '../components/componentProtect';
 import {useRecoilValue} from 'recoil';
 import {user} from '../hook/hook';
+
 function AppRouter() {
   const userData = useRecoilValue(user);
   return (
@@ -28,8 +30,11 @@ function AppRouter() {
             </ComponentProtect>
           }
         />
-        <Route path='/login' element={<Login />} />
-        <Route path='/singup' element={<SingUp />} />
+        <Route element={<ComponentProtectLoginSingup userData={userData} />}>
+          <Route path='/login' element={<Login />} />
+          <Route path='/singup' element={<SingUp />} />
+        </Route>
+
         <Route element={<ComponentProtectUser userData={userData} />}>
           <Route path='/myData' element={<MyData />} />
           <Route path='/myReport' element={<MyReport />} />

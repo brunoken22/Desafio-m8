@@ -5,7 +5,7 @@ import {Text} from '../../ui/text';
 export function Login() {
   return (
     <div className={css.contenedor}>
-      <img src={img} alt='login' />
+      <img src={img} alt='login' className={css.img} />
       <Text eti='h1'>Login</Text>
       <FormLogin />
     </div>

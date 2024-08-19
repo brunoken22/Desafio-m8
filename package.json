@@ -14,6 +14,7 @@
     "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@mapbox/mapbox-sdk": "^0.15.1",
     "@sendinblue/client": "^3.3.1",
+    "@tsparticles/react": "^3.0.0",
     "@types/dropzone": "^5.7.4",
     "@types/mapbox-gl": "^2.7.11",
     "@types/mapbox__mapbox-gl-geocoder": "^4.7.3",

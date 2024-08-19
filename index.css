@@ -3,10 +3,4 @@
 }
 body {
   margin: 0;
-  background: linear-gradient(
-    15deg,
-    rgba(72, 58, 180, 1) 0%,
-    rgba(29, 191, 253, 1) 50%,
-    rgba(252, 176, 69, 1) 100%
-  );
 }

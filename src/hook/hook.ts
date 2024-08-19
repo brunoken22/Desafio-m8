@@ -30,5 +30,10 @@ export const modPet = atom({
     name: '',
     dataUrl: '',
     ubi: [],
+    UserId: '',
+    createdAt: '',
+    lat: 0,
+    lng: 0,
+    updatedAt: '2024-08-17T22:13:45.212Z',
   },
 });

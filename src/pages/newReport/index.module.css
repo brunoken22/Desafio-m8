@@ -1,8 +1,5 @@
-.container2 {
-  max-width: 95%;
-  min-width: 100px;
-  margin: auto;
-  height: 100%;
+.container {
+  position: relative;
 }
 .comprobar {
   text-align: center;

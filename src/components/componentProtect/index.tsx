@@ -15,3 +15,10 @@ export function ComponentProtectUser({userData}: {userData: {id: string}}) {
   }
   return <>{<Outlet />}</>;
 }
+
+export function ComponentProtectLoginSingup({userData}: {userData: {id: string}}) {
+  if (userData.id) {
+    return <Navigate to={'/myReport'} />;
+  }
+  return <>{<Outlet />}</>;
+}

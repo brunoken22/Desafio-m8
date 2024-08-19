@@ -19,7 +19,10 @@
   display: flex;
   justify-content: space-between;
 }
-
+.img {
+  position: relative;
+  background-color: #fff;
+}
 .title {
   font-size: 2rem;
   font-weight: bold;

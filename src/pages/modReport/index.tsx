@@ -64,10 +64,10 @@ export function ModReport() {
       data['dataUrl'] = pet.img;
     }
     if (!newData.lat) {
-      data.dataAGuardar['lat'] = pet.ubi[0];
+      data.dataAGuardar['lat'] = pet.lat.toString();
     }
     if (!newData.lng) {
-      data.dataAGuardar['lng'] = pet.ubi[1];
+      data.dataAGuardar['lng'] = pet.lng.toString();
     }
   }
   useEffect(() => {
@@ -77,7 +77,7 @@ export function ModReport() {
       return setActiveUbi(true);
     }
     dataDropzone(subirFoto.current);
-    const map = initMapbox(mapbox.current, [pet.ubi[1], pet.ubi[0]]);
+    const map = initMapbox(mapbox.current, [pet.lng, pet.lat]);
     searchMapbox.current.appendChild(geocoder.onAdd(map));
     geocoder.setInput(pet.lugar);
     geocoder.on('result', function (e) {
@@ -158,6 +158,7 @@ export function ModReport() {
                   alt=''
                   width='180px'
                   height='175px'
+                  className={`${css.img}`}
                   ref={foto}
                 />
               </div>
