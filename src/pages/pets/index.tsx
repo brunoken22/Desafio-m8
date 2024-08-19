@@ -1,18 +1,18 @@
 import {useState, useEffect} from 'react';
 import {Text} from '../../ui/text';
 import css from './index.module.css';
-import {useRecoilState} from 'recoil';
-import {petsCerca} from '../../hook/hook';
+import {useRecoilState, useRecoilValue} from 'recoil';
+import {petsCerca, user} from '../../hook/hook';
 import {getPetCerca, sendEmail} from '../../lib/api';
 import TemplatePets from '../../components/templatePets';
 import {Link} from 'react-router-dom';
 
 export function Pets() {
   const [pet, setPetId]: any = useState();
-  const [openForm, setOpeForm]: any = useState(false);
+  const [openForm, setOpeForm] = useState(false);
   const [pets, setPet] = useRecoilState(petsCerca);
-
-  const handleForm = (e: any) => {
+  const userData = useRecoilValue(user);
+  const handleForm = async (e: any) => {
     e.preventDefault();
 
     const newData = {
@@ -23,19 +23,18 @@ export function Pets() {
       email: pet.email,
       nombre: 'ejemplo',
     };
-    sendEmail(newData).then((res) => {
-      if (res.message == 'ok') {
-        alert('Mensaje Enviado');
-        location.reload();
-      }
-    });
+    const response = await sendEmail(newData);
+    if (response.message) {
+      alert('Mensaje Enviado');
+      setOpeForm(fakse);
+    }
   };
 
   useEffect(() => {
     const ubicacion: any = localStorage.getItem('ubi');
     const ubi = JSON.parse(ubicacion);
     if (ubi.lat) {
-      getPetCerca(ubi.lat, ubi.lng).then((res) => {
+      getPetCerca(ubi.lat, ubi.lng, userData.email).then((res) => {
         setPet(res[0].hits);
       });
     }

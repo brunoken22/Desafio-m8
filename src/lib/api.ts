@@ -1,4 +1,5 @@
-const Api_url = 'https://pet-finder-hpfq.onrender.com';
+const Api_url =
+  'http://localhost:3000' || 'https://pet-finder-hpfq.onrender.com';
 export async function init() {
   const token = await localStorage.token;
   if (token) {
@@ -69,12 +70,15 @@ export async function createPet(data: any) {
 
   return respuestaJSON;
 }
-export async function getPetCerca(lat: Number, lng: Number) {
-  const res = await fetch(Api_url + `/pet-cerca-de?lat=${lat}&lng=${lng}`, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+export async function getPetCerca(lat: Number, lng: Number, email?: string) {
+  const res = await fetch(
+    Api_url + `/pet-cerca-de?lat=${lat}&lng=${lng}&email=${email}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
   const data = await res.json();
   return data;
 }
@@ -102,7 +106,7 @@ export async function deletePet(id: any) {
 }
 export async function sendEmail(newMessage: any) {
   const res = await fetch(Api_url + '/sendinblue', {
-    method: 'post',
+    method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
