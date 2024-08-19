@@ -3,7 +3,6 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  background-color: #272626;
   width: 300px;
 }
 .card {
@@ -32,8 +31,11 @@
   justify-content: space-between;
   gap: 1rem;
 }
-
+.figure {
+  backdrop-filter: blur(10px);
+}
 .img {
   object-fit: cover;
-  background-color: #fff;
+  width: 100%;
+  height: 240px;
 }

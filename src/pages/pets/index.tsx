@@ -5,6 +5,7 @@ import {useRecoilState} from 'recoil';
 import {petsCerca} from '../../hook/hook';
 import {getPetCerca, sendEmail} from '../../lib/api';
 import TemplatePets from '../../components/templatePets';
+import {Link} from 'react-router-dom';
 
 export function Pets() {
   const [pet, setPetId]: any = useState();
@@ -44,24 +45,31 @@ export function Pets() {
       <div style={{textAlign: 'center'}} className={css.contenedor}>
         <Text eti='h1'>Mascotas perdidas cerca</Text>
         <div className={css.pets}>
-          {pets
-            ? pets.map((item: any) => {
-                return (
-                  <TemplatePets
-                    key={item.objectID}
-                    report={true}
-                    handleReport={() => {
-                      setOpeForm(true);
-                      setPetId(item);
-                    }}
-                    id={item.objectID}
-                    name={item.name}
-                    lugar={item.lugar}
-                    img={item.img}
-                  />
-                );
-              })
-            : null}
+          {pets ? (
+            pets.map((item: any) => {
+              return (
+                <TemplatePets
+                  key={item.objectID}
+                  report={true}
+                  handleReport={() => {
+                    setOpeForm(true);
+                    setPetId(item);
+                  }}
+                  id={item.objectID}
+                  name={item.name}
+                  lugar={item.lugar}
+                  img={item.img}
+                />
+              );
+            })
+          ) : (
+            <div className={css.newReport}>
+              <p>No hay mascotas cerca</p>
+              <Link to={'/newReport'} className='button is-info'>
+                Reportar mascota
+              </Link>
+            </div>
+          )}
         </div>
         {openForm ? (
           <div className={css.petss}>

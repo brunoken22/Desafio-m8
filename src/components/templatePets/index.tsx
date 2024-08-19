@@ -22,7 +22,7 @@ export default function TemplatePets({
 }) {
   return (
     <div className={`${css.cardInfo}`}>
-      <figure className='image is-3by2'>
+      <figure className={css.figure}>
         <img src={img} alt='pets' className={css.img} />
       </figure>
       <div className={css.card}>

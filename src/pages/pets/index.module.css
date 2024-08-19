@@ -47,6 +47,13 @@
     max-width: 550px;
   }
 }
+.newReport {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
 .petss div {
   width: 100%;
 }
