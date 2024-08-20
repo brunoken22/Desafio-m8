@@ -12,6 +12,7 @@ export function Pets() {
   const [openForm, setOpeForm] = useState(false);
   const [pets, setPet] = useRecoilState(petsCerca);
   const userData = useRecoilValue(user);
+
   const handleForm = async (e: any) => {
     e.preventDefault();
 
@@ -35,10 +36,10 @@ export function Pets() {
     const ubi = JSON.parse(ubicacion);
     if (ubi.lat) {
       getPetCerca(ubi.lat, ubi.lng, userData.email).then((res) => {
-        setPet(res[0].hits);
+        return setPet(res[0].hits);
       });
     }
-  }, []);
+  }, [userData]);
   return (
     <>
       <div style={{textAlign: 'center'}} className={css.contenedor}>

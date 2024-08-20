@@ -30,7 +30,7 @@ export default function TemplatePets({
           <h5 className='title is-4 nombre' style={{color: '#fff'}}>
             {name}
           </h5>
-          <p className='subtitle is-6' style={{color: '#fff'}}>
+          <p className=' is-6' style={{color: '#fff'}}>
             {lugar}
           </p>
         </div>

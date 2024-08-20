@@ -6,14 +6,15 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import {useEffect, useRef} from 'react';
 import * as mapboxgl from 'mapbox-gl';
 import {createPet} from '../../lib/api';
-import {user} from '../../hook/hook';
-import {useRecoilValue} from 'recoil';
+import {myreport, user} from '../../hook/hook';
+import {useRecoilState, useRecoilValue} from 'recoil';
 import {useNavigate} from 'react-router-dom';
 import {Loader} from '../../components/loader';
 export function NewReport() {
   const [loading, setLoading] = useState(false);
   const router = useNavigate();
   const [connectedOnce, setConnectedOnce] = useState(false);
+  const [mypets, setMyPets] = useRecoilState(myreport);
   const userDato = useRecoilValue(user);
   const foto: any = useRef();
   const subirFoto: any = useRef();
@@ -36,7 +37,7 @@ export function NewReport() {
       token: JSON.parse(localStorage.getItem('token')!),
     }).then((response) => {
       setLoading(false);
-
+      setMyPets([...mypets, response.pet]);
       if (response.message) {
         return alert(response.message);
       }
@@ -95,7 +96,6 @@ export function NewReport() {
       }));
     });
   }
-
   return (
     <div className={css.container}>
       {userDato && userDato?.id ? (
@@ -160,7 +160,7 @@ export function NewReport() {
           <h2 className={css.comprobar}>Ingrese a una cuenta o registrese</h2>
         </div>
       )}
-      {loading&&<Loader/>}
+      {loading && <Loader />}
     </div>
   );
 }

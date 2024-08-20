@@ -17,7 +17,7 @@ export const token = atom({
   key: 'token',
   default: '',
 });
-export const myreport = atom({
+export const myreport = atom<any[]>({
   key: 'myreport',
   default: [],
 });
