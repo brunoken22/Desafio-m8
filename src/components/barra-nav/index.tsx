@@ -37,7 +37,7 @@ export function BarraNav() {
         aria-label='main navigation'>
         <div className='navbar-brand'>
           <Link className='inicio navbar-item' to='/'>
-            <img src={img} height='28' />
+            <img src={img} height='28' alt='logo' />
           </Link>
 
           <a

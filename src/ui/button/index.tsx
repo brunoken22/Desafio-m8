@@ -1,4 +1,3 @@
-// import bootstrap from "bootstrap/dist/css/bootstrap.min.css"
 
 export function Button(props:any){
    const handleClick =(e:any)=>{

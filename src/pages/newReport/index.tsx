@@ -124,7 +124,7 @@ export function NewReport() {
               <div className='text-center'>
                 <img
                   src='#'
-                  alt=''
+                  alt='subir'
                   width='180px'
                   height='175px'
                   style={{display: 'none'}}

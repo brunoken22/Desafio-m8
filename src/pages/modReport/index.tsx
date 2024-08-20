@@ -99,10 +99,8 @@ export function ModReport() {
   }, [activeUbi]);
 
   function dataDropzone(btn: any) {
-    // const imgPet: any = that.querySelector(".imagen");
     const myDropzone = initDropzone(btn);
     myDropzone.on('thumbnail', function (file) {
-      // imgPet.src = file.dataURL;
       const component = document
         .querySelector('.dz-preview')!
         .querySelectorAll('div');
@@ -155,7 +153,7 @@ export function ModReport() {
               <div className='text-center'>
                 <img
                   src={pet.img}
-                  alt=''
+                  alt='pet'
                   width='180px'
                   height='175px'
                   className={`${css.img}`}
