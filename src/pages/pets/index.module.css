@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  background-color: #000000ba;
 }
 .h2 {
   font-size: 1.5rem;

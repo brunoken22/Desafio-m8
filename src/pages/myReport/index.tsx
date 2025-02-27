@@ -1,7 +1,7 @@
 import TemplatePets from '../../components/templatePets';
-import {modPet, myreport, user} from '../../hook/hook';
-import {useRecoilValue, useSetRecoilState} from 'recoil';
-import {Link, useNavigate} from 'react-router-dom';
+import { modPet, myreport, user } from '../../hook/hook';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { Link, useNavigate } from 'react-router-dom';
 import css from './index.module.css';
 
 export function MyReport() {
@@ -24,7 +24,7 @@ export function MyReport() {
                 lugar={item.lugar}
                 handleEditar={() => {
                   setPet(item);
-                  nav('/modReport', {replace: true});
+                  nav('/modReport', { replace: true });
                 }}
                 handleBorrar={async () => {
                   const deletePet = await import('../../lib/api');
@@ -46,7 +46,7 @@ export function MyReport() {
       </div>
     </div>
   ) : (
-    <div className='com'>
+    <div className='container'>
       <h2 className={css.comprobar}>Ingrese a una cuenta o registrese</h2>
     </div>
   );

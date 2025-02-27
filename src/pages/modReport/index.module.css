@@ -6,6 +6,8 @@
   align-items: center;
   z-index: 30;
   backdrop-filter: blur(5px);
+  position: relative;
+  background-color: #000000ba;
 }
 .containerFormUbi {
   padding: 1rem;

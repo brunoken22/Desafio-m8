@@ -1,11 +1,11 @@
-import {useRef, useState} from 'react';
-import {Link} from 'react-router-dom';
+import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import css from './index.module.css';
-import {singin} from '../../lib/api';
-import {user, token} from '../../hook/hook';
-import {useRecoilState} from 'recoil';
-import {useNavigate} from 'react-router-dom';
-import {Loader} from '../loader';
+import { singin } from '../../lib/api';
+import { user, token } from '../../hook/hook';
+import { useRecoilState } from 'recoil';
+import { useNavigate } from 'react-router-dom';
+import { Loader } from '../loader';
 
 export function FormLogin() {
   const [loading, setLoading] = useState(false);
@@ -31,7 +31,7 @@ export function FormLogin() {
       setTokenInit(respuesta.token);
 
       localStorage.setItem('token', JSON.stringify(respuesta.token));
-      nav('/myData', {replace: true});
+      nav('/myData', { replace: true });
     });
   };
   if (loading) {
@@ -69,7 +69,7 @@ export function FormLogin() {
             ref={password}
           />
         </div>
-        <a href='#' style={{color: '#000'}}>
+        <a href='#' style={{ color: '#000' }}>
           Olvidasates contraseña?
         </a>
       </div>
@@ -78,9 +78,9 @@ export function FormLogin() {
           Ingresar
         </button>
       </div>
-      <p style={{textAlign: 'center', marginTop: '1rem'}}>
+      <p style={{ textAlign: 'center', marginTop: '1rem' }}>
         Aún no tienes cuenta?{' '}
-        <Link to='/singup' style={{color: '#000'}}>
+        <Link to='/singup' style={{ color: 'green' }}>
           Registrate
         </Link>
       </p>

@@ -1,12 +1,16 @@
-.contenedor{
-   display: flex;
-   flex-direction: column;
-   justify-content: space-around;
-   align-items: center;
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background-color: #000000ba;
+  width: 100%;
+  position: relative;
 }
-.botones{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap: 1rem;
+.botones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }

@@ -1,12 +1,12 @@
-import {Label} from '../../ui/label';
-import {Input} from '../../ui/input';
-import {Link, useNavigate} from 'react-router-dom';
-import {auth} from '../../lib/api';
-import {user} from '../../hook/hook';
-import {useRecoilState} from 'recoil';
+import { Label } from '../../ui/label';
+import { Input } from '../../ui/input';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../../lib/api';
+import { user } from '../../hook/hook';
+import { useRecoilState } from 'recoil';
 import css from './index.module.css';
-import {useState} from 'react';
-import {Loader} from '../loader';
+import { useState } from 'react';
+import { Loader } from '../loader';
 export function FormSingUp() {
   const nav = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ export function FormSingUp() {
 
       if (res) {
         alert('Cuenta creada');
-        nav('/login', {replace: true});
+        nav('/login', { replace: true });
       }
     });
   };
@@ -43,20 +43,20 @@ export function FormSingUp() {
         <Input type='email' input='email' />
       </div>
       <div className='mb-3'>
-        <Label name='password'>Password</Label>
+        <Label name='password'>Contraseña</Label>
         <Input type='password' input='password' />
       </div>
       <div className='mb-3'>
-        <Label name='rePassword'>Repetir Password</Label>
+        <Label name='rePassword'>Repetir contraseña</Label>
         <Input type='password' input='rePassword' />
       </div>
       <button type='submit' className='button is-success'>
         Siguente
       </button>
-      <p style={{textAlign: 'center', marginTop: '1rem'}}>
+      <p style={{ textAlign: 'center', marginTop: '1rem' }}>
         Ya tenes una cuenta?{' '}
-        <Link to='/login' style={{color: '#000'}}>
-          Login
+        <Link to='/login' style={{ color: 'green' }}>
+          Inicar sesión
         </Link>
       </p>
     </form>

@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import img from '../../img/logo.png';
 import css from './index.module.css';
-import {user} from '../../hook/hook';
-import {useRecoilValue} from 'recoil';
-import {cerrarSesion} from '../../lib/api';
+import { user } from '../../hook/hook';
+import { useRecoilValue } from 'recoil';
+import { cerrarSesion } from '../../lib/api';
 export function BarraNav() {
   const data = useRecoilValue(user);
   const cerrarLogin = React.useRef<any>(null);
@@ -31,10 +31,7 @@ export function BarraNav() {
   }, [data]);
   return (
     <>
-      <nav
-        className='navbar is-dark'
-        role='navigation'
-        aria-label='main navigation'>
+      <nav className='navbar is-dark' role='navigation' aria-label='main navigation'>
         <div className='navbar-brand'>
           <Link className='inicio navbar-item' to='/'>
             <img src={img} height='28' alt='logo' />
@@ -74,10 +71,10 @@ export function BarraNav() {
             <div className='navbar-item'>
               <div className={css.buttons}>
                 <Link to='/singup' className='button is-primary singup'>
-                  <strong>Sign up</strong>
+                  <strong>Crear cuenta</strong>
                 </Link>
                 <Link to='/login' className='button is-light login '>
-                  Log in
+                  Inicar sesión
                 </Link>
               </div>
             </div>
@@ -90,9 +87,7 @@ export function BarraNav() {
               alignItems: 'center',
             }}
             ref={cerrarLogin}>
-            <a
-              className='btn-cerrar button is-danger is-rounded'
-              onClick={handleCerrarSesion}>
+            <a className='btn-cerrar button is-danger is-rounded' onClick={handleCerrarSesion}>
               Cerrar Sesión{' '}
             </a>
           </div>
